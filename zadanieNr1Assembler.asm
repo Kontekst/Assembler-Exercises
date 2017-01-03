@@ -9,24 +9,38 @@ _roznica PROC
 push ebp
 mov ebp,esp
 
-mov ecx, dword PTR [ebp + 8] ; Za≥adowanie do ECX adresu zmiennej 'a'
-mov edx, [ecx] ; Za≥adowanie do EDX wartoúci zmiennej 'a'
+;/////////////////////////////////
+;Wersja kr√≥tka
+;mov eax, [ebp + 8] ; EAX = &a
+;mov eax, [eax]; EAX = a
+
+
+;mov edx, [ebp + 12] ; EDX = &wsk
+;mov edx, [edx]  ; EDX = &b
+;mov edx, [edx] ; EDX = b
+
+;sub eax,edx ; EAX zwraca ( a - b )
+;/////////////////////////////////
+
+;KorzystajƒÖc z koprocesora arytmetycznego
+mov ecx, dword PTR [ebp + 8] ; Za≈Çadowanie do ECX adresu zmiennej 'a'
+mov edx, [ecx] ; Za≈Çadowanie do EDX warto≈õci zmiennej 'a'
 
 push edx
-fild dword PTR [esp] ; Za≥adowanie pierwszej liczby ST(0)=a 
+fild dword PTR [esp] ; Za≈Çadowanie pierwszej liczby ST(0)=a 
 add esp,4
 
-mov ecx, dword PTR [ebp + 12] ; Za≥adowanie do ECX adresu na wskaünik(wsk)
-mov edx, dword PTR [ecx]  ; Za≥adowanie do EDX adresu zmiennej 'b' , na ktÛrπ wskazywa≥ wskaønik(wsk)
-mov ecx, dword PTR [edx] ; Za≥adowanie do ECX wartoúci zmiennej 'b'
+mov ecx, dword PTR [ebp + 12] ; Za≈Çadowanie do ECX adresu na wska≈∫nik(wsk)
+mov edx, dword PTR [ecx]  ; Za≈Çadowanie do EDX adresu zmiennej 'b' , na kt√≥rƒÖ wskazywa≈Ç wska≈ºnik(wsk)
+mov ecx, dword PTR [edx] ; Za≈Çadowanie do ECX warto≈õci zmiennej 'b'
 
 push ecx
-fild dword PTR [esp] ; Za≥adowanie drugiej liczby ST(0)= b ST(1)= a
+fild dword PTR [esp] ; Za≈Çadowanie drugiej liczby ST(0)= b ST(1)= a
 add esp,4
 
 fsubp st(1),st(0) ; ST(0)= (a - b)
-fistp dword PTR [ebp + 8] ; Zapisanie rÛønicy w kodzie U2 na stosie
-mov eax, dword PTR [ebp + 8] ; WartoúÊ zwracamy rejestrem eax
+fistp dword PTR [ebp + 8] ; Zapisanie r√≥≈ºnicy w kodzie U2 na stosie
+mov eax, dword PTR [ebp + 8] ; Warto≈õƒá zwracamy rejestrem eax
 
 
 pop ebp
