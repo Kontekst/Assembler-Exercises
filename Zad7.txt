@@ -1,0 +1,55 @@
+//Tomasz Kontek 160553
+7. W pewnym programie u¿ywana jest funkcja
+iteracja, której prototyp ma postaæ:
+unsigned char iteracja(unsigned char a);
+Podaæ wartoœæ zwracan¹ przez funkcjê iteracja w
+poni¿szym fragmencie programu w jêzyku C
+w = iteracja(32);
+Kod funkcji iteracja zapisany w asemblerze ma
+postaæ
+_iteracja PROC
+ push ebp
+ mov ebp, esp
+ mov al, [ebp+8]
+ sal al, 1
+; SAL wykonuje przesuniecie logiczne
+; w lewo
+ jc zakoncz
+ inc al
+ push eax
+ call _iteracja
+ add esp, 4
+ pop ebp
+ ret
+zakoncz: rcr al, 1
+; rozkaz RCR wykonuje przesuniêcie
+; cykliczne w prawo przez CF
+ pop ebp
+ ret
+_iteracja ENDP 
+/////////////////////////
+Rozwi¹zanie
+
+Rejest al ma 8 bitów
+mov al,[ebp + 8] /// tutaj to mov al,32 ->|0010 0000|
+sal al,1 /// |0100 0000| = 64 przesuniêcie logiczne o 1 w lewo, 0 wpisane na najm³odszy bit
+CF = 0 ( w CF zostaje wpisany najstarszy bit 'x' |xyyy yyyy|
+jc zakoncz ///( jump if CF = 1) CF = 0 ,nie skaczemy
+inc al /// |0100 0001| = 65
+push eax /// na stosie = 65
+call iteracja (65)
+     mov al,[ ebp + 8 ] /// al = 65 
+     sal al,1 /// |1000 0010| al = 130
+     jc zakoncz /// nie skaczemy CF = 0
+     inc al /// |1000 0011| al = 131
+     push eax /// na stosie 131
+     call iteracja(131)
+          mov al,[ebp + 8] /// al = 131
+          sal al,1 /// -> |0000 0110| CF = 1 Do CF wpisaliœmy 1 bo najsatrszy bit =1 
+          jc CF ///  CF = 1 wiêc skaczemy d oetykiety zakoncz
+          rcr al,1 ; rozkaz RCR wykonuje przesuniêcie cykliczne w prawo przez CF |1000 0011|
+          ret // W eax zwracamy 131 |1000 0011|
+      ret // W eax nadal zwracamy 131 |1000 0011|
+ ret // W eax nadal zwracamy 131 |1000 0011|
+
+WYNIK = 131
