@@ -1,20 +1,20 @@
 //Tomasz Kontek 160553
 /*
-1. Poni¿ej podano fragment programu w jêzyku C.
+1. PoniÅ¼ej podano fragment programu w jÄ™zyku C.
 int a, b, *wsk, wynik;
 wsk = &b;
 a = 21; b = 25;
 wynik = roznica(&a, &wsk);
 
-Napisaæ podprogram w asemblerze przystosowany do
-wywo³ywania z poziomu jêzyka C, którego prototyp ma
-postaæ :
+NapisaÄ‡ podprogram w asemblerze przystosowany do
+wywoÅ‚ywania z poziomu jÄ™zyka C, ktÃ³rego prototyp ma
+postaÄ‡ :
 
 int roznica(int * odjemna,
 	int ** odjemnik);
 
-Podprogram ten powinien obliczyæ ró¿nicê dwóch liczb
-ca³kowitych ze znakiem w kodzie U2.
+Podprogram ten powinien obliczyÄ‡ rÃ³Å¼nicÄ™ dwÃ³ch liczb
+caÅ‚kowitych ze znakiem w kodzie U2.
 */
 #include <stdio.h>
 
