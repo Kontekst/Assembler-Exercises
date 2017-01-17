@@ -1,38 +1,30 @@
 //Tomasz Kontek 160553
-/*4. Poni¿ej podano fragment programu w jêzyku C.
-int pomiary[7], * wsk;
-- - - - - - - - - - - - - - -
-wsk = szukaj_elem_min(pomiary, 7);
-printf("\nElement minimalny = %d\n",
- * wsk);
-Napisaæ podprogram w asemblerze przystosowany do
-
-//Tomasz Kontek 160553
-/*2. Funkcja biblioteczna jêzyka C o prototypie
+/*2. Funkcja biblioteczna jÄ™zyka C o prototypie
 void * malloc(unsigned int k);
-przydziela k - bajtowy obszar pamiêci i zwraca adres
-przydzielonego obszaru.Jeœli wymagany obszar nie
-mo¿e byæ przydzielony, to funkcja zwraca wartoœæ 0.
-Napisaæ podprogram w asemblerze, przystosowany do
-wywo³ywania z poziomu jêzyka C — prototyp tego
-podprogramu ma postaæ :
+przydziela k - bajtowy obszar pamiÄ™ci i zwraca adres
+przydzielonego obszaru.JeÅ›li wymagany obszar nie
+moÅ¼e byÄ‡ przydzielony, to funkcja zwraca wartoÅ›Ä‡ 0.
+NapisaÄ‡ podprogram w asemblerze, przystosowany do
+wywoÅ‚ywania z poziomu jÄ™zyka C â€” prototyp tego
+podprogramu ma postaÄ‡ :
 int * kopia_tablicy(int tabl[],
 unsigned int n);
-Podprogram kopia_tablicy tworzy now¹ tablicê
-o rozmiarach identycznych z oryginaln¹ i zwraca adres
-nowej tablicy(albo 0, jeœli tablicy nie mo¿na by³o
-utworzyæ).
-Do nowej tablicy nale¿y skopiowaæ wszystkie
-elementy tablicy oryginalnej o wartoœciach bêd¹cych
-liczbami parzystymi.Pozosta³e elementy nowej tablicy
-wype³niæ zerami.
-Wskazówki:
-1. Now¹ tablicê nale¿y utworzyæ poprzez
-przydzielenie odpowiedniego obszaru pamiêci za
-pomoc¹ funkcji malloc.
-2. Sprawdzenie czy liczba jest parzysta naj³atwiej
-wykonaæ poprzez odczytanie najm³odszego bitu
-liczby(bit nr 0).*/
+Podprogram kopia_tablicy tworzy nowÄ… tablicÄ™
+o rozmiarach identycznych z oryginalnÄ… i zwraca adres
+nowej tablicy(albo 0, jeÅ›li tablicy nie moÅ¼na byÅ‚o
+utworzyÄ‡).
+Do nowej tablicy naleÅ¼y skopiowaÄ‡ wszystkie
+elementy tablicy oryginalnej o wartoÅ›ciach bÄ™dÄ…cych
+liczbami parzystymi.PozostaÅ‚e elementy nowej tablicy
+wypeÅ‚niÄ‡ zerami.
+WskazÃ³wki:
+1. NowÄ… tablicÄ™ naleÅ¼y utworzyÄ‡ poprzez
+przydzielenie odpowiedniego obszaru pamiÄ™ci za
+pomocÄ… funkcji malloc.
+2. Sprawdzenie czy liczba jest parzysta najÅ‚atwiej
+wykonaÄ‡ poprzez odczytanie najmÅ‚odszego bitu
+liczby(bit nr 0).
+*/
 
 
 
@@ -55,7 +47,7 @@ int main() {
 		printf("\n");
 	}
 	else {
-		printf("B³ad nie uda³o siê zaalokowaæ pamiêci\n");
+		printf("BÅ‚ad nie udaÅ‚o siÄ™ zaalokowaÄ‡ pamiÄ™ci\n");
 	}
 	getchar();
 	return 0;
