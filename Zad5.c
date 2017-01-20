@@ -1,5 +1,3 @@
-//Nie mam pewności czy szyfruje dokładnie z celem zadania
-
 //Tomasz Kontek 160553
 /*5. Podprogram, przystosowany do wywoływania z
 poziomu języka C, o prototypie :
