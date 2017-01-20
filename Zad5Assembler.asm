@@ -12,21 +12,21 @@ push ebx
 push esi
 push edi
 
-mov esi,[ebp + 8] ; EDX = adres na tablicê char
+mov esi,[ebp + 8] ; EDX = adres na tablicÄ™ znakowÄ… - char wsk[]
 
 mov ebx, 52525252H
 xor edi,edi ; EDX = licznik
 
 petla:
 mov dl,[esi + edi ]
-xor bl,dl ; Zaszyfrowanie danych
-mov [esi + edi ],  bl
+xor dl,bl ; Zaszyfrowanie danych
+mov [esi + edi ],  dl
 
-xor eax,eax ; EAX bêdzie mia³ bit 30
+xor eax,eax ; EAX bÄ™dzie miaÅ‚ bit 30
 bt ebx,30
 rcl eax,1
 
-xor ecx,ecx; ECX bêdzie mia³ bit 31 
+xor ecx,ecx; ECX bÄ™dzie miaÅ‚ bit 31 
 bt ebx,31
 rcl ecx,1
 
