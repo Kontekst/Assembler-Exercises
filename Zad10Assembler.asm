@@ -17,16 +17,16 @@ mov edi,[ebp + 12] ; EDI = y
 bt edi,31 ; bit o wadze 2^24
 jc ediWieksze 
 
-shl edi,1 ; Jeœli bit o wadze 2^24 = 0 to mo¿emy EDI przesun¹æ o 1 i obie liczby s¹ w tym samym formacie
+shl edi,1 ; JeÅ›li bit o wadze 2^24 = 0 to moÅ¼emy EDI przesunÄ…Ä‡ o 1 i obie liczby sÄ… w tym samym formacie
 
 cmp esi,edi
 jbe ediWieksze; Jump if below or equal. Skoki dla liczb typu unsigned !
-stc ; Tu koñczy siê treœæ g³ówna zadania ESI > EDI
+stc ; Tu koÅ„czy siÄ™ treÅ›Ä‡ gÅ‚Ã³wna zadania ESI > EDI
 mov eax,0
 jmp koniec
 
 ediWieksze: ; EDI >ESI
-clc ; Tu koñczy siê treœæ g³ówna zadania EDI >= ESI
+clc ; Tu koÅ„czy siÄ™ treÅ›Ä‡ gÅ‚Ã³wna zadania EDI >= ESI
 mov eax,1
  
  koniec:
