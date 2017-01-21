@@ -1,5 +1,5 @@
 //Tomasz Kontek 160553
-//Treœæ zadania w pliku Ko³oNr2Dziubich2017.jpg
+//TreÅ“Ã¦ zadania w pliku KoÂ³oNr2Dziubich2017.jpg
 #include <stdio.h>
 
 extern float* XYZ2R(float *  tablCIEXYZ, int n);
