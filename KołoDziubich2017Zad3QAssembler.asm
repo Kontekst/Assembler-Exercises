@@ -15,24 +15,24 @@ push esi
 push edi
  
 mov esi,[ebp +8] ; ESI = Adres tablicy
-mov eax,[ebp + 12] ; EAX = n /3   n to liczba elemntów tablicy
-mov edx,12 ; Aby wyliczyæ liczbê bajtów które musi przyj¹æ _malloc
-; muszê drugi parametr znajduj¹cy siê teraz w eax pomno¿yæ przez 3
-; wtedy mam liczbê danych typu float w tablicy,
-; i jeszczepomno¿yæ razy 4, poniewa¿ float ma 4 bajty
-mul edx ; EAX = liczba bajtów dla funkcji malloc
+mov eax,[ebp + 12] ; EAX = n /3   n to liczba elemntÃ³w tablicy
+mov edx,12 ; Aby wyliczyÃ¦ liczbÃª bajtÃ³w ktÃ³re musi przyjÂ¹Ã¦ _malloc
+; muszÃª drugi parametr znajdujÂ¹cy siÃª teraz w eax pomnoÂ¿yÃ¦ przez 3
+; wtedy mam liczbÃª danych typu float w tablicy,
+; i jeszczepomnoÂ¿yÃ¦ razy 4, poniewaÂ¿ float ma 4 bajty
+mul edx ; EAX = liczba bajtÃ³w dla funkcji malloc
  
 push edx
-call _malloc ; EAX = adres zarezerwowanej pamiêci,czyli naszej nowej tablicy, ju¿ do koñca programu go nie zmieniam
+call _malloc ; EAX = adres zarezerwowanej pamiÃªci,czyli naszej nowej tablicy, juÂ¿ do koÃ±ca programu go nie zmieniam
 add esp,4
  
 mov ecx,[ebp+12] ; ECX = n /3
  
  
-push eax ; Zapiszê adres na póŸniej, poniewa¿ w pêtli bêdê go zmienia³
+push eax ; ZapiszÃª adres na pÃ³Å¸niej, poniewaÂ¿ w pÃªtli bÃªdÃª go zmieniaÂ³
  
 poczatekPetli:
-finit ; Mo¿liwe ¿e nawet niepotrzebne w tym programie
+finit ; MoÂ¿liwe Â¿e nawet niepotrzebne w tym programie
 push ecx ;ECX pomocniczo
  
 mov ecx,dword PTR [esi]
@@ -49,7 +49,7 @@ push ecx
 fld dword PTR [esp] ; ST(0) = Y, ST(1) = X
 add esp,4
  
-mov [eax],ecx ; Przepisanie drugiej liczby z trójki do nowej tablicy
+mov [eax],ecx ; Przepisanie drugiej liczby z trÃ³jki do nowej tablicy
 add esi,4
 add eax,4
 mov ecx,dword PTR [esi]
@@ -58,12 +58,12 @@ push ecx
 fld dword PTR [esp] ; ST(0) = Z, ST(1) = Y, ST(2) = X
 add esp,4
  
-mov [eax],ecx ; Przepisanie trzeciej liczby z trójki do nowej tablicy
+mov [eax],ecx ; Przepisanie trzeciej liczby z trÃ³jki do nowej tablicy
 sub esi,8
 sub eax,8
  
  
-;W³aœciwa konwersja ;3.063*x - 1.393*y - 0.476*z
+;WÂ³aÅ“ciwa konwersja ;3.063*x - 1.393*y - 0.476*z
 ; ST(0) = Z, ST(1) = Y, ST(2) = X
 ;////////////////////////////////////////////////////////////////////
 mov ecx,3063
@@ -102,14 +102,14 @@ fmulp st(1),st(0) ; ST(0) = Z*0.476, ST(1) = Y*1.393, ST(2) = X*3,063
 ;////////////////////////////////////////////////////////////////////
 fsubp st(2),st(0) ; ST(0)= Y*1.393 ST(1) = ( X*3.063 - Z*0.476 )
 fsubp st(1),st(0); ST(0) = ( X*3.063 - Z*0.476 - Y*1.393 )
-;Wynik mamy na wierzcho³ku koprocesora
+;Wynik mamy na wierzchoÂ³ku koprocesora
 fstp dword PTR wynik
 mov ecx,dword PTR wynik
-mov [eax],ecx ; Zapisanie wyniku do pierwszgo floata z trójki
+mov [eax],ecx ; Zapisanie wyniku do pierwszgo floata z trÃ³jki
  
-add eax,12 ;Przesuniêcie o kolejne 3 elementy
+add eax,12 ;PrzesuniÃªcie o kolejne 3 elementy
 add esi,12
-pop ecx ; Przywrócenie ecx, aby móc kontrolowaæ pêtle
+pop ecx ; PrzywrÃ³cenie ecx, aby mÃ³c kontrolowaÃ¦ pÃªtle
 dec ecx
 jne poczatekPetli
  
