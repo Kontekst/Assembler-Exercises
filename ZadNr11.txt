@@ -1,0 +1,15 @@
+11. Podaæ reprezentacjê liczby –0.25 w formacie
+zmiennoprzecinkowym double. Wskazówka: pole
+mantysy w formacie w formacie double zajmuje 52
+bity. 
+
+-Double ma 64 bity
+-Wyk³adnik = 64-52-1(bit znaku) =11  
+-Poniewa¿ liczba jest ujemna ,bit nr 63 = 1
+-Teraz trzeba znaleŸæ liczbê 'n' która dla 2^n * z = 0,25
+ gdzie z to liczba zawieraj¹ca siê <1,2) 
+- 2^(-2) = 0,25 * 1 wiêc nasz 'n' = -2 oraz 'z' = 1
+-Wyk³adnik dla 2^0 to zero i same jedynki |011 1111 1111| // Dla float to te¿ 0 i same jedynki
+¿eby mieæ 2^(-2) trzeba od tej liczby odj¹c dwa |011 1111 1101|
+-W mantysie mamy niejawn¹ jedynkê, wiêc skoro 'z'=1 to wpisujemy w ni¹ same zera
+|1|011 1111 1101|0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000|
