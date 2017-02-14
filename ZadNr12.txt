@@ -1,0 +1,23 @@
+12. Poni¿ej podano reprezentacjê binarn¹ liczby -8.25
+w postaci 32-bitowej liczby zmiennoprzecinkowej
+(float). Uzupe³niæ brakuj¹ce bity mantysy w tej
+reprezentacji. 
+
+|a|1000 0010|b|c|d|e|f| 0000 0000 0000 0000 00|
+
+Wyk³adnik w formacie float ma 8 bitów.
+
+Bit znaku 'a' = 1 poniewa¿ liczba jest ujemna
+
+Wyk³adnik = 2^3 = 8 poniewa¿ |0111 1111| + |0000 0011| = |1000 0010|
+
+Uzyskanie 'bcdef' 8.25 - 2^3 = 0.25
+
+0.25 = 8 * x 
+x = 1/32 = 2^(-5)
+wiêc pi¹ty bit od lewej =1
+
+'bcdef' = '00001'
+
+Ostatecznie mamy
+|1|1000 0010|0000 1000 0000 0000 0000 000|
